@@ -1,0 +1,23 @@
+---
+
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: install dependencies
+    image: python
+    commands:
+      - python3 -m venv venv
+      - . venv/bin/activate
+      - pip install -r requirements-dev.txt
+
+  - name: lint
+    image: python
+    commands:
+      - . venv/bin/activate
+      - yamllint site.yml requirements.yml host_vars roles
+      - ansible-lint site.yml
