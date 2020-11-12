@@ -1,0 +1,7 @@
+---
+
+- name: Install Python dependencies
+  pip:
+    name:
+      - docker
+    extra_args: '{{ pip.extra_args | default(omit) }}'

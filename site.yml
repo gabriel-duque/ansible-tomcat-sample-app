@@ -4,5 +4,7 @@
 - hosts: localhost
   force_handlers: true  # Delete the tempdir even if the image build fails
   roles:
+  - role: python_deps_install
+    tags: ['python_deps_install', 'python_deps', 'deps']
   - role: build_image
     tags: ['build_image', 'build']
