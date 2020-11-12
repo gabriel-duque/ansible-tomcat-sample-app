@@ -11,6 +11,7 @@
   template:
     src: Dockerfile.j2
     dest: '{{ tmpdir.path }}/Dockerfile'
+    mode: '0400'
 
 - name: Build container image
   community.general.docker_image:
