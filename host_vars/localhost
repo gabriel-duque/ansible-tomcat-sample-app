@@ -15,6 +15,6 @@ built_image:
   name: tomcat-sample
   tag: latest
 
-# The port we wish to expose our server on
+# Configuration variables for the deployment
 deploy:
   exposed_port: 8080
