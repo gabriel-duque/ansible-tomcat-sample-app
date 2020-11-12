@@ -1,0 +1,3 @@
+collections:
+# We need docker_image to build our container image
+- name: community.general
