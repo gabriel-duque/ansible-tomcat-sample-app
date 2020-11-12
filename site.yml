@@ -1,0 +1,8 @@
+---
+
+# Build, deploy and test our Apache Tomcat sample image on localhost
+- hosts: localhost
+  force_handlers: True # Delete the tempdir even if the image build fails
+  roles:
+  - role: build_image
+    tags: ['build_image', 'build']

@@ -1,0 +1,7 @@
+{{ ansible_managed | comment }}
+
+FROM {{ build.base_image.name }}:{{ build.base_image.tag }}
+
+RUN mkdir -p {{ build.base_image.catalina_base }}/webapps
+
+ADD {{ build.war_uri }} {{ build.base_image.catalina_base }}/webapps

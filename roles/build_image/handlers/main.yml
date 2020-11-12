@@ -1,0 +1,7 @@
+---
+
+- name: Delete temporary directory
+  file:
+    path: "{{ tmpdir.path }}"
+    state: absent
+  when: tmpdir.path is defined

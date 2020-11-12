@@ -1,0 +1,20 @@
+---
+
+# Variables for our Apache Tomcat sample deployment playbook
+
+# The base image to use
+build:
+  base_image:
+    name: tomcat
+    tag: 9.0-slim
+    catalina_base: /usr/local/tomcat
+  war_uri: https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/sample.war
+
+# The image we want to build
+built_image:
+  name: tomcat-sample
+  tag: latest
+
+# The port we wish to expose our server on
+deploy:
+  exposed_port: 8080

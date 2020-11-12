@@ -1,0 +1,20 @@
+---
+
+- name: Create temporary directory
+  tempfile:
+    state: directory
+  register: tmpdir
+  notify:
+    - Delete temporary directory
+
+- name: Generate Dockerfile
+  template:
+    src: Dockerfile.j2
+    dest: '{{ tmpdir.path }}/Dockerfile'
+
+- name: Build container image
+  community.general.docker_image:
+    name: '{{ built_image.name }}'
+    tag: '{{ built_image.tag }}'
+    build:
+      path: '{{ tmpdir.path }}'
