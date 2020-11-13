@@ -1,0 +1,19 @@
+---
+
+- name: Inspect container image
+  community.general.docker_image_info:
+    name: '{{ built_image.name }}:{{ built_image.tag }}'
+  register: image_info
+
+- name: Check image existence
+  ansible.builtin.assert:
+    that:
+      - image_info.images
+
+- name: Start container
+  community.general.docker_container:
+    image: '{{ built_image.name }}:{{ built_image.tag }}'
+    name: '{{ deploy.container_name }}'
+    state: started
+    ports:
+      - "{{ deploy.exposed_port }}:8080"

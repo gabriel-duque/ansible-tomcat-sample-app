@@ -8,3 +8,5 @@
     tags: ['python_deps_install', 'python_deps', 'deps']
   - role: build_image
     tags: ['build_image', 'build']
+  - role: start_container
+    tags: ['start_container', 'start']

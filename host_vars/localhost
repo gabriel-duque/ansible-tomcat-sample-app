@@ -17,4 +17,5 @@ built_image:
 
 # Configuration variables for the deployment
 deploy:
+  container_name: tomcat-sample
   exposed_port: 8080
