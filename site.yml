@@ -1,7 +1,7 @@
 ---
 
 # Build, deploy and test our Apache Tomcat sample image on localhost
-- hosts: localhost
+- hosts: webservers
   force_handlers: true  # Delete the tempdir even if the image build fails
   roles:
   - role: python_deps_install
