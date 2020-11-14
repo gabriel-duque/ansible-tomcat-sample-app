@@ -15,5 +15,15 @@
     image: '{{ built_image.name }}:{{ built_image.tag }}'
     name: '{{ deploy.container_name }}'
     state: started
+    container_default_behavior: 'no_defaults'
+    auto_remove: 'no'
+    detach: 'yes'
+    init: 'no'
+    interactive: 'no'
+    memory: '0'
+    paused: 'no'
+    privileged: 'no'
+    read_only: 'no'
+    tty: 'no'
     ports:
-      - "{{ deploy.exposed_port }}:8080"
+      - '{{ deploy.exposed_port }}:8080'
