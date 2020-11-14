@@ -17,5 +17,7 @@
   community.general.docker_image:
     name: '{{ built_image.name }}'
     tag: '{{ built_image.tag }}'
+    source: 'build'
     build:
       path: '{{ tmpdir.path }}'
+      pull: 'yes'
