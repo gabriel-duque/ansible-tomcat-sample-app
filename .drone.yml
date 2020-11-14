@@ -19,5 +19,5 @@ steps:
     image: python
     commands:
       - . venv/bin/activate
-      - yamllint site.yml requirements.yml host_vars roles
+      - yamllint site.yml requirements.yml group_vars roles
       - ansible-lint site.yml
