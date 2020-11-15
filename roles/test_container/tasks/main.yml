@@ -20,8 +20,8 @@
     executable: python3
     cmd: '{{ tmpfile.path }}'
   register: test_results
-  ignore_errors: '{{ ignore_errors | default(false) }}'
-  no_log: '{{ no_log | default(false) }}' 
+  ignore_errors: '{{ test_ignore_errors | default(false) }}'
+  no_log: '{{ test_no_log | default(false) }}' 
 
 - name: Flush temporary file deletion handler
   meta: flush_handlers
@@ -29,7 +29,7 @@
 - name: Exit early if test succeeded
   meta: end_host
   when:
-    - end_host is defined
-    - end_host == true
+    - test_end_host is defined
+    - test_end_host == true
     - test_results.rc is defined
     - test_results.rc == 0

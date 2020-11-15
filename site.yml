@@ -6,9 +6,9 @@
   roles:
   - role: test_container
     vars:
-      ignore_errors: true
-      end_host: true
-      no_log: true
+      test_ignore_errors: true
+      test_end_host: true
+      test_no_log: true
   - role: python_deps_install
     tags: ['python_deps_install', 'python_deps', 'deps']
   - role: build_image
