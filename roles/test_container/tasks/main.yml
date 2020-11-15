@@ -16,5 +16,5 @@
 - name: Test server deployment
   script:
   args:
-    executable: pytest
+    executable: python3
     cmd: '{{ tmpfile.path }}'

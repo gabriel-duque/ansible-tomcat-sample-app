@@ -1,4 +1,5 @@
 import hashlib
+import sys
 
 from typing import List, Tuple
 
@@ -32,3 +33,6 @@ def test_http_get(uri, status_code, allow_redirects, content_hash):
     assert resp.status_code == status_code
     if content_hash:
         assert hashlib.sha256(resp.content).hexdigest() == content_hash
+
+if __name__ == "__main__":
+    sys.exit(pytest.main([sys.modules["__main__"].__file__, "-qq"]))
