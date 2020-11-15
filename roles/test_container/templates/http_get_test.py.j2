@@ -1,0 +1,34 @@
+import hashlib
+
+from typing import List, Tuple
+
+import pytest
+import requests
+
+test_cases: List[Tuple[str, int, bool, str]] = [
+{% for test in test_input.http_get_tests %}
+    (
+        "http://{}:{}{}{}".format(
+            "{{ test_input.host }}",
+            {{ deploy.exposed_port }},
+            "{{ test_input.path_prefix }}",
+            "{{ test.path }}"
+        ),
+        {{ test.status_code | default(200) }},
+        {{ test.allow_redirects | default(True) }},
+        "{{ test.content_hash | default() }}"
+    ),
+{% endfor %}
+]
+
+
+@pytest.mark.parametrize(
+    "uri,status_code,allow_redirects,content_hash", test_cases
+)
+def test_http_get(uri, status_code, allow_redirects, content_hash):
+    resp: requests.Response = requests.get(
+        url=uri, allow_redirects=allow_redirects
+    )
+    assert resp.status_code == status_code
+    if content_hash:
+        assert hashlib.sha256(resp.content).hexdigest() == content_hash

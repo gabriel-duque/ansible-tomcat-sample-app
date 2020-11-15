@@ -1,0 +1,7 @@
+---
+
+- name: Delete temporary file
+  file:
+    path: "{{ tmpfile.path }}"
+    state: absent
+  when: tmpfile.path is defined

@@ -19,3 +19,33 @@ built_image:
 deploy:
   container_name: tomcat-sample
   exposed_port: 8080
+
+# Integration tests for our deployment
+test_input:
+  host: localhost
+  path_prefix: /sample
+  http_get_tests:
+    - path: ''
+      allow_redirects: false
+      status_code: 302
+    - path: ''
+      status_code: 200
+      content_hash: 846f1b0353b8c2019c2248c902ac208a2e60e5b23ebf8b0ec1796ef06f4139fe
+    - path: /
+      status_code: 200
+      content_hash: 846f1b0353b8c2019c2248c902ac208a2e60e5b23ebf8b0ec1796ef06f4139fe
+    - path: /images
+      allow_redirects: false
+      status_code: 302
+    - path: /images
+      status_code: 404
+      content_hash: 9fa9f2f45079967322ebd1fe2a830f0438205e6b33b8230e130fea65e7775573
+    - path: /images/tomcat.gif
+      status_code: 200
+      content_hash: c8ecc0090fc2950d97ebc4102675b21904838f64e253702d520ac3819944bfc2
+    - path: /hello.jsp
+      status_code: 200
+      content_hash: 83fcbcd29bd513e4827df0f022a6f8abc5958a8a8798773d697d3d1a8dddecf0
+    - path: /hello
+      status_code: 200
+      content_hash: da1adfaaf572348ec71f655b26c1eec37826db190a2df46a7076c7bc49ebe3e1

@@ -1,0 +1,20 @@
+---
+
+- name: Create temporary file
+  tempfile:
+    prefix: ""
+    suffix: ".py"
+  register: tmpfile
+  notify:
+    - Delete temporary file
+
+- name: Generate test script
+  template:
+    src: http_get_test.py.j2
+    dest: '{{ tmpfile.path }}'
+
+- name: Test server deployment
+  script:
+  args:
+    executable: pytest
+    cmd: '{{ tmpfile.path }}'

@@ -3,5 +3,6 @@
 - name: Install Python dependencies
   pip:
     name:
-      - docker
+      - docker  # To build and start containers
+      - requests  # To handle HTTP requests while testing
     extra_args: '{{ pip.extra_args | default(omit) }}'
