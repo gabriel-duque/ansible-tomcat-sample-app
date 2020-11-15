@@ -5,4 +5,5 @@
     name:
       - docker  # To build and start containers
       - requests  # To handle HTTP requests while testing
-    extra_args: '{{ pip.extra_args | default(omit) }}'
+    state: 'latest'
+  become: 'yes'
