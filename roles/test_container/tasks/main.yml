@@ -30,6 +30,6 @@
   meta: end_host
   when:
     - test_end_host is defined
-    - test_end_host == true
+    - test_end_host
     - test_results.rc is defined
     - test_results.rc == 0
