@@ -2,6 +2,9 @@
 
 # Variables for our Apache Tomcat sample deployment playbook
 
+# This is to know if we need to become a superuser to use the Docker socket
+need_become: true
+
 # The base image to use
 build:
   base_image:

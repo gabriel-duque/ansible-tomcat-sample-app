@@ -6,4 +6,5 @@
       - docker  # To build and start containers
       - requests  # To handle HTTP requests while testing
     state: 'latest'
-  become: 'yes'
+    extra_args: '{{ pip_extra_args }}'
+  become: '{{ need_become }}'

@@ -4,7 +4,7 @@
   community.general.docker_image_info:
     name: '{{ built_image.name }}:{{ built_image.tag }}'
   register: image_info
-  become: 'yes'
+  become: '{{ need_become }}'
 
 - name: Check image existence
   ansible.builtin.assert:
@@ -28,4 +28,4 @@
     tty: 'no'
     ports:
       - '{{ deploy.exposed_port }}:8080'
-  become: 'yes'
+  become: '{{ need_become }}'
