@@ -4,13 +4,13 @@
 - hosts: webservers
   force_handlers: true
   roles:
+  - role: python_deps_install
+    tags: ['python_deps_install', 'python_deps', 'deps']
   - role: test_container
     vars:
       test_ignore_errors: true
       test_end_host: true
       test_no_log: true
-  - role: python_deps_install
-    tags: ['python_deps_install', 'python_deps', 'deps']
   - role: build_image
     tags: ['build_image', 'build']
   - role: start_container
