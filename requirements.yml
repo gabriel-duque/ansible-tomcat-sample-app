@@ -1,5 +1,6 @@
 ---
 
 collections:
-  # We need docker_image to build our container image
+  # We need `docker_image`, `docker_image_info` and `docker_container` to build
+  # and start our container image
   - name: community.general
