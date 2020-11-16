@@ -21,7 +21,7 @@
     cmd: '{{ tmpfile.path }}'
   register: test_results
   ignore_errors: '{{ test_ignore_errors | default(false) }}'
-  no_log: '{{ test_no_log | default(false) }}' 
+  no_log: '{{ test_no_log | default(false) }}'
 
 - name: Flush temporary file deletion handler
   meta: flush_handlers
